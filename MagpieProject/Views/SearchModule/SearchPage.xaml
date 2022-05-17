@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:components="clr-namespace:MagpieProject.Components" xmlns:viewcells="clr-namespace:MagpieProject.Views.ProjectsModule.ViewCells"
+    x:Class="MagpieProject.Views.SearchModule.SearchPage"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False"
+    x:Name="searchpage"
+    
+    >
+    <ContentPage.Content>
+        <Grid
+             Style="{StaticResource ProjectsTabbarPadding}"
+             x:Name="mainStack"
+            HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              RowDefinitions="Auto,*">
+             <StackLayout
+            Grid.Row="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+              <Label Style="{StaticResource H2TitleWithWhiteColor}"
+                        FontSize="28"
+                        Margin="20,40,20,20"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" Text="Search"></Label>
+                <Frame x:Name="searchComp" HasShadow="False" Margin="15,0,15,0" Padding="20"
+                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                      BorderColor="{DynamicResource ButtonTextColor}" IsClippedToBounds="True" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                         <Image HorizontalOptions="Start"
+                                         Source="Search.png"
+                                         HeightRequest="18"
+                                         WidthRequest="18">
+
+                                  </Image>
+               <components:BorderlessEntry HorizontalOptions="FillAndExpand"
+                          Placeholder="Name"
+                          PlaceholderColor="{DynamicResource TextColorBlue}"
+                          BackgroundColor="Transparent"
+                          TextColor="{DynamicResource TextColor}"
+                          TextChanged="Search_TextChanged"
+                                           Text="{Binding SearchText}"
+
+                          >
+                  
+                   </components:BorderlessEntry>
+                        </StackLayout>
+                     <Frame.Background>
+                       <LinearGradientBrush  >
+                        <GradientStop Color="{DynamicResource ProjectCardBackgroundColor1}"
+                          Offset="0.1"/>
+
+                        <GradientStop Color="{DynamicResource ProjectCardBackgroundColor2}"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+          
+                   </Frame.Background>
+              </Frame>
+            </StackLayout>
+            <ScrollView Grid.Row="1"
+                        
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             BindableLayout.ItemsSource="{Binding ProjectsList}"
+                             >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame IsClippedToBounds="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+               CornerRadius="10"
+               Margin="15,10,15,5"
+               Padding="5"
+               HasShadow="False"
+               BackgroundColor="{DynamicResource WhiteColor}">
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              ColumnDefinitions="*,Auto"
+              
+              Margin="10"
+              Padding="5">
+            <Grid Grid.Row="0"
+                  Grid.Column="0"
+                  RowSpacing="10"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                  RowDefinitions="Auto,Auto">
+                 <Label x:Name="projectNamelbl"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Text="{Binding ProjectName}"
+                     Style="{StaticResource ProjectNameStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+
+            <Label x:Name="subdesclbl"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Text="{Binding ProjectShortDescription}"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+                <Button
+                                   
+                                    CornerRadius="10"
+                                    Grid.Row="0" Grid.Column="1"
+                                    Padding="0"
+                                    HeightRequest="28"
+                                    WidthRequest="130"
+                                    Grid.RowSpan="2"
+                                        HorizontalOptions="EndAndExpand"
+                                        BorderWidth="1"
+                                        BorderColor="Transparent"
+                                        VerticalOptions="CenterAndExpand"
+                                        ImageSource="Star.png"
+                                        Text="Favorite" Style="{StaticResource ButtonSolidStyle}"
+                                    Command="{Binding BindingContext.FavoriteCommand, Source={x:Reference searchpage}}"
+                                        CommandParameter="{Binding .}"
+                                        >
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsSelected}" Value="True">
+                            <Setter Property="Text" Value="Added"></Setter>
+                            <Setter Property="ImageSource" Value="Check.png"></Setter>
+                            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"></Setter>
+                            <Setter Property="TextColor" Value="{DynamicResource TextColorBlue}" ></Setter>
+                            <Setter Property="BorderColor" Value="{DynamicResource TextColorBlue}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                                </Button>
+            </Grid>
+              
+        </Grid>
+            <Frame.Background>
+                  <LinearGradientBrush  >
+                        <GradientStop Color="{DynamicResource ProjectCardBackgroundColor1}"
+                          Offset="0.1"/>
+
+                        <GradientStop Color="{DynamicResource ProjectCardBackgroundColor2}"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+            </Frame.Background>
+            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+          </Grid>
+    </ContentPage.Content>
+</ContentPage>

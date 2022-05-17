@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:templates="clr-namespace:MagpieProject.Templates" xmlns:converters="clr-namespace:MagpieProject.Converters" xmlns:viewmodels="clr-namespace:MagpieProject.CustomUIComponents" xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="MagpieProject.CustomUIComponents.UsersGroup">
+     <!--<ContentView.BindingContext>
+        <viewmodels:PeopleViewModel />
+    </ContentView.BindingContext>-->
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="avatarFrame" TargetType="views:AvatarView">
+                <Setter Property="Margin" Value="-15,0,0,0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+
+            <DataTemplate x:Key="personTemplate">
+                <views:AvatarView Text="{Binding Initials}" Style="{StaticResource avatarFrame}" Color="{Binding RandomColor}" TextColor="White" >
+                    <views:AvatarView.Triggers>
+                        <DataTrigger TargetType="views:AvatarView" Binding="{Binding Initials}" Value="+">
+                            <Setter Property="TextColor" Value="#717171"></Setter>
+                            <Setter Property="FontSize" Value="Title"></Setter>
+                           
+                        </DataTrigger>
+                    </views:AvatarView.Triggers>
+                </views:AvatarView>
+            </DataTemplate>
+
+           
+
+            <templates:PersonListDataTemplateSelector
+                x:Key="personDataTemplateSelector"
+                PersonTemplate="{StaticResource personTemplate}" />
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+         <Grid>
+
+        <StackLayout
+
+            BindableLayout.ItemTemplateSelector="{StaticResource personDataTemplateSelector}"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            VerticalOptions="Center"
+            BindableLayout.ItemsSource="{Binding People}">
+
+          
+
+            <BindableLayout.EmptyViewTemplate>
+                <DataTemplate>
+                    <Label Text="Nobody" />
+                </DataTemplate>
+            </BindableLayout.EmptyViewTemplate>
+        </StackLayout>
+        
+    </Grid>
+    </ContentView.Content>
+</ContentView>

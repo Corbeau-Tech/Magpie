@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:t="http://xamarin.com/schemas/2020/toolkit"
+     xmlns:components="clr-namespace:MagpieProject.Components"
+    x:Class="MagpieProject.Views.LoginView" BackgroundColor="#F2F2F2" NavigationPage.HasNavigationBar="False" >
+    <ContentPage.Content>
+
+        <Grid
+            x:Name="mainGrid"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Margin="0"
+            Padding="0"
+            RowDefinitions="Auto,Auto" >
+            <!--<Grid.Background>
+                 <LinearGradientBrush  >
+                        <GradientStop Color="{DynamicResource LoginPageFillGradient1}"
+                          Offset="0.1"/>
+                        <GradientStop Color="{DynamicResource LoginPageFillGradient2}"
+                          Offset="0.5"/>
+                        <GradientStop Color="{DynamicResource LoginPageFillGradient3}"
+                          Offset="1.0"/>
+                    
+                     </LinearGradientBrush>
+            </Grid.Background>-->
+            <!--<Path
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"
+                 Grid.Row="0"
+                 Data="M0 0H501V310.98L0 641V0 Z"
+                >
+                <Path.Fill>
+                    <LinearGradientBrush  >
+                        <GradientStop Color="#7B39F5"
+                          Offset="0.1"/>
+
+                        <GradientStop Color="#40C3FD"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>-->
+            <Grid
+           Grid.Row="0"
+           RowDefinitions="Auto,*,Auto"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand"
+           Margin="35"
+           >
+
+                <StackLayout
+              
+               Margin="20"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="0"
+               >
+                    <Grid
+               RowDefinitions="Auto"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               >
+                        <!--<Ellipse
+                   StrokeThickness="0"
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+                   HeightRequest="86"
+                   WidthRequest="84"
+            Fill="White"/>-->
+                        <Image
+            Grid.Row="0"
+            Margin="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HeightRequest="86"
+            WidthRequest="94"
+            Aspect="AspectFit"
+            Source="GoldenHeaderLogo.png">
+
+                        </Image>
+                    </Grid>
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        Padding="0"
+                        Margin="0">
+                         <Label x:Name="headerText" Style="{StaticResource HeaderTitleStyle}"
+                      HorizontalTextAlignment="Start" Text="Crow's Nest" Margin="0" Padding="0">
+                      
+                             </Label>
+                        <Label x:Name="tmText" 
+                      HorizontalTextAlignment="Start" TextType="Html" Style="{StaticResource HeaderTitleStyle}" FontSize="Micro" Margin="-5,5,-5,0" Padding="0">
+                      <Label.Text>
+                           <![CDATA[
+                        &#153;
+                          ]]>
+                      </Label.Text>
+                            </Label>
+                             <Label x:Name="AppText" Style="{StaticResource HeaderTitleStyle}"
+                      HorizontalTextAlignment="Start" Text="App" Margin="0" Padding="0">
+                      
+                    </Label>
+                    </StackLayout>
+                    
+                </StackLayout>
+
+                <Grid Grid.Row="1"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              RowSpacing="8"
+              >
+                    <Rectangle
+                Margin="0"
+                Grid.RowSpan="5"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                RadiusX="10"
+                RadiusY="10"
+                t:ShadowEffect.Color="Gray"
+                StrokeThickness="0"
+                Fill="{AppThemeBinding Dark=#ffffff, Light=#ffffff}"
+                ></Rectangle>
+
+                    <Label
+                Margin="35,35,35,10"
+                Grid.Row="0"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource H2TitleStyle}"
+                Text="Log in"
+                TextColor="#707070"/>
+                    <components:MaterialEntry Grid.Row="1" Placeholder="Email" imgSource="Username.png" AccentColor="#7B39F5" Text="{Binding Email}" IsError="{Binding IsEmailError}"></components:MaterialEntry>
+                    <components:MaterialEntry Grid.Row="2" Placeholder="Password" imgSource="Key.png" IsPassword="True" AccentColor="#7B39F5" Text="{Binding Password}" IsError="{Binding IsPasswordError}"></components:MaterialEntry>
+                    <Label Grid.Row="3" Text="Forgot Password?" HorizontalOptions="StartAndExpand" TextColor="#6F6DFF"  Margin="20,0,20,0" FontFamily="GTAmericaMedium" FontSize="13"></Label>
+                    <Button Grid.Row="4" HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="20,35,20,35" Text="Login" BackgroundColor="#626DD8" TextColor="White" Command="{Binding LoginCommand}"></Button>
+                </Grid>
+
+                 
+            </Grid>
+            <Label
+                
+                Margin="35,35,35,10"
+                Grid.Row="1"
+                VerticalTextAlignment="End"
+                VerticalOptions="End"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource SubTitleWithWhiteColor}"
+                >
+                     <Label.FormattedText>
+                         <FormattedString>
+                             <Span Text="Dont have an account?" FontFamily="GTAmericaRegular" ></Span>
+                             <Span Text=" Sign up" FontAttributes="Bold">
+                                  <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SignUp_TappedCommand}"/>
+                                    </Span.GestureRecognizers>
+                             </Span>
+
+                         </FormattedString>
+                     </Label.FormattedText>
+
+                 </Label>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

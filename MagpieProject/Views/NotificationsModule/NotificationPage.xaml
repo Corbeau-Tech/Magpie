@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="MagpieProject.Views.NotificationsModule.NotificationPage"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False"
+   
+    
+    x:Name="notificationpage"
+    >
+    <ContentPage.Content>
+       
+        <Grid
+            HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              RowDefinitions="100,*">
+            <StackLayout
+            x:Name="mainStack"
+            Grid.Row="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+              <Label Style="{StaticResource H2TitleWithWhiteColor}"
+                        FontSize="28"
+                        Margin="20,30,20,0"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" Text="Notifications"></Label>
+               
+            </StackLayout>
+            <ScrollView Grid.Row="1"
+                        
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             BindableLayout.ItemsSource="{Binding NotificationsList}"
+                             >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"
+                                  Margin="20,10,20,10"
+                                  RowSpacing="7"
+                                  RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                  ColumnDefinitions="Auto,*,*"
+                                  ColumnSpacing="15">
+
+                                  <Image Grid.Row="0"
+                                         Grid.Column="0"
+                                         Grid.RowSpan="3"
+                                         Source="Warning.png"
+                                         HeightRequest="42"
+                                         WidthRequest="42">
+
+                                  </Image>
+                                  <Label x:Name="datelbl"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                     Text="{Binding NotificationDate}"
+                                     Style="{StaticResource SmallTitleBold}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+
+                                <Label x:Name="notificationlbl"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                     Text="{Binding NotificationTitle}"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+
+
+                                <Label x:Name="notificationdesc"
+                                         Grid.Row="2"
+                                         Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                         Text="{Binding NotificationDescription}"
+                                         Style="{StaticResource SubDescStyle}"
+                                         HorizontalOptions="FillAndExpand"
+                                         HorizontalTextAlignment="Start"
+                                         LineBreakMode="WordWrap"></Label>
+                                 <Button
+                                     Margin="0,20,0,0"
+                                     Grid.Row="3"
+                                     CornerRadius="10"
+                                         Grid.Column="2"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+
+                                         xct:ShadowEffect.Color="{DynamicResource ButtonTextColor}"
+
+                                         xct:ShadowEffect.OffsetX="2"
+
+                                         xct:ShadowEffect.OffsetY="2"
+
+                                         BackgroundColor="{DynamicResource ButtonBackgroundColor}"
+
+                                         Text="Dismiss" Style="{StaticResource ButtonBorderStyle}"
+                                        Command="{Binding BindingContext.DismissCommand, Source={x:Reference notificationpage}}"
+                                        CommandParameter="{Binding .}"
+                                        
+                                     >
+
+                                 </Button>
+                                <Button
+                                    Margin="0,20,0,0"
+                                    CornerRadius="10"
+                                    Grid.Row="3" Grid.Column="1"
+                                        HorizontalOptions="FillAndExpand"
+                                             FontSize="16"
+                                        VerticalOptions="FillAndExpand"
+
+                                        Text="Review Now" Style="{StaticResource ButtonSolidStyle}"
+                                    Command="{Binding BindingContext.ReviewCommand, Source={x:Reference notificationpage}}"
+                                        CommandParameter="{Binding .}"
+                                        >
+
+                                </Button>
+                                  <BoxView Margin="-15,20,-15,0"
+                Grid.Row="4" Grid.ColumnSpan="3" HeightRequest="1" WidthRequest="1" Color="{DynamicResource BoxViewColor}"></BoxView>
+              
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

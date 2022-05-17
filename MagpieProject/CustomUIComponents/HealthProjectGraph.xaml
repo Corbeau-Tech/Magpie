@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    x:Class="MagpieProject.CustomUIComponents.HealthProjectGraph">
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                     Orientation="Vertical">
+             <Label
+                 Margin="20,0,0,5"
+                               Text="Health Projection"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Start" Style="{StaticResource SubTitle}">
+
+              </Label>
+        
+        <chart:SfChart x:Name="HealthProjectionChart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" EnableSeriesSelection="True" Margin="0,0,-10,0">
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:DateTimeAxis Interval="3"  IntervalType="Months" Minimum="2021-12-31" Maximum="2022-12-31" ShowMajorGridLines="False" ShowMinorGridLines="False" RangePadding="Auto" >
+                    <chart:DateTimeAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle  LabelFormat="MMM" TextColor="{DynamicResource TextColor}" FontSize="12"/>
+                    </chart:DateTimeAxis.LabelStyle>
+                   
+                </chart:DateTimeAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Minimum="0" Maximum="110"  EdgeLabelsDrawingMode="Fit" ShowMajorGridLines="False" ShowMinorGridLines="False">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12"/>
+                            </chart:NumericalAxis.LabelStyle>
+                           
+                        </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:SfChart.Series>
+                <chart:SplineSeries ItemsSource="{Binding HealthProjectionData}" XBindingPath="XValue" YBindingPath="YValue1" StrokeWidth="3"  Label="Budget" EnableTooltip="True" EnableAnimation="True">
+                   <chart:SplineSeries.ColorModel>
+                        <chart:ChartColorModel Palette="Custom">
+                        <chart:ChartColorModel.CustomGradientColors>
+                          <chart:ChartGradientColor StartPoint="0,0" EndPoint="1,0">
+                            <chart:ChartGradientColor.GradientStops>
+                              <chart:ChartGradientStop Color="#5AC53A" Offset= "0.1"/>
+                              <chart:ChartGradientStop Color="#EDD86D" Offset= "1.0"/>
+                            </chart:ChartGradientColor.GradientStops>
+                          </chart:ChartGradientColor>
+                        </chart:ChartColorModel.CustomGradientColors>
+                      </chart:ChartColorModel>
+                   </chart:SplineSeries.ColorModel>
+                   
+                </chart:SplineSeries>
+
+                
+              
+
+
+                 <chart:SplineSeries ItemsSource="{Binding HealthProjectionDataForecast}" XBindingPath="XValue" YBindingPath="YValue1"  StrokeWidth="3"  Label="Forecast"  EnableTooltip="True" EnableAnimation="True" >
+                      <chart:SplineSeries.StrokeDashArray>
+                            <x:Array Type="{x:Type sys:Double}">
+                                <sys:Double>4</sys:Double>
+                                <sys:Double>3</sys:Double>
+                            </x:Array>
+                        </chart:SplineSeries.StrokeDashArray>
+                     <chart:SplineSeries.YAxis>
+                        <chart:NumericalAxis OpposedPosition="true" Minimum="0" Maximum="110"  EdgeLabelsDrawingMode="Fit" ShowMajorGridLines="False" ShowMinorGridLines="False" IsVisible="False">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12"/>
+                            </chart:NumericalAxis.LabelStyle>
+                           
+                        </chart:NumericalAxis>
+                    </chart:SplineSeries.YAxis>
+                   <chart:SplineSeries.ColorModel>
+                        <chart:ChartColorModel Palette="Custom">
+                        <chart:ChartColorModel.CustomGradientColors>
+                          <chart:ChartGradientColor StartPoint="0,0" EndPoint="1,0">
+                            <chart:ChartGradientColor.GradientStops>
+                              <chart:ChartGradientStop Color="#5AC53A" Offset= "0.1"/>
+                              <chart:ChartGradientStop Color="#EDD86D" Offset= "1.0"/>
+                            </chart:ChartGradientColor.GradientStops>
+                          </chart:ChartGradientColor>
+                        </chart:ChartColorModel.CustomGradientColors>
+                      </chart:ChartColorModel>
+                   </chart:SplineSeries.ColorModel>
+                 </chart:SplineSeries>
+            </chart:SfChart.Series>
+            
+        </chart:SfChart>
+          </StackLayout>
+    </ContentView.Content>
+</ContentView>

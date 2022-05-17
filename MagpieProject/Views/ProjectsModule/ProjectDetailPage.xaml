@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customuicomponents="clr-namespace:MagpieProject.CustomUIComponents" xmlns:components="clr-namespace:MagpieProject.Components" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:views="http://xamarin.com/schemas/2020/toolkit" xmlns:converters="clr-namespace:MagpieProject.Converters"
+    x:Class="MagpieProject.Views.ProjectsModule.ProjectDetailPage"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False"
+    >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StatusColorConverter x:Key="StatusColorConverter"></converters:StatusColorConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+       
+         <Grid x:Name="mainGrid" Style="{StaticResource ProjectsTabbarPadding}" RowDefinitions="100,*" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <customuicomponents:DetailHeader Grid.Row="0"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         ProjectName="{Binding ProjectTitle}"
+                                         ProjectDescription="{Binding ProjectDesc}"
+                                         People="{Binding People}"
+                                         Command="{Binding UserCommand}">
+
+        </customuicomponents:DetailHeader>
+              <ScrollView  Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                  <SwipeView x:Name="swipeview" SwipeStarted="SwipeView_SwipeStarted">
+                       <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                            />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                         <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem 
+                                                    />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                  <Grid x:Name="DetailsGrid"
+                  
+                   Margin="15"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                  
+                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                   ColumnDefinitions="*,*">
+                 <views:Expander  Grid.Row="0" Grid.ColumnSpan="2" IsExpanded="True">
+                        <views:Expander.Header>
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                         Orientation="Horizontal" Margin="0,0,10,10">
+                             <Label
+                                     Text="SUMMARY CHART"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                 VerticalTextAlignment="Center"
+                                     LineBreakMode="WordWrap"></Label>
+                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="Down.png" HeightRequest="24" WidthRequest="24">
+                                     <Image.Triggers>
+                                        <DataTrigger TargetType="Image"
+                                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Source"
+                                                    Value="Up.png" />
+                                            <Setter Property="HeightRequest"
+                                                    Value="24" />
+                                            <Setter Property="WidthRequest"
+                                                    Value="24" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                 </Image>
+                                </StackLayout>
+                        </views:Expander.Header>
+                        <customuicomponents:SummaryChart
+                            HeightRequest="370"
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    </customuicomponents:SummaryChart>
+                    </views:Expander>
+                   
+                   <Frame Grid.Row="1"
+                          Grid.Column="0"
+                          HasShadow="False"
+                          CornerRadius="20"
+                          HeightRequest="165"
+                          BackgroundColor="{DynamicResource DetailsBoxColor}"
+                          >
+                       <Grid HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             RowDefinitions="Auto,Auto,Auto">
+                                <StackLayout Grid.Row="0" Orientation="Vertical"
+                                             Spacing="10">
+                                    <Label
+                                     Text="BUDGET"
+                                     Style="{StaticResource ProjectDetailBoxHeaderStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                      <Label 
+                                     Text="{Binding TotalBudget}"
+                                     FontSize="25"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                </StackLayout>
+                            <StackLayout Grid.Row="1" Orientation="Vertical"
+                                             Spacing="10">
+                                    <Label
+                                     Text="Total Budget"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                      <Label 
+                                     Text="{Binding ActualCost}"
+                                     FontSize="25"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                </StackLayout>
+                           <StackLayout Grid.Row="2" Orientation="Vertical"
+                                             Spacing="10">
+                                    <Label
+                                     Text="Budget Consumed"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                       <components:GradientProgressBar
+                                            BarBackgroundColor="#C4C4C4"
+                                            CornerRadius="15"
+                                            FontSize="12"
+                                            GradientEndColor="#5AC53A"
+                                            GradientStartColor="#5AC53A"
+                                            HeightRequest="20"
+                                            Percentage="{Binding Percentage}"
+                                            TextColor="White"
+                                            WidthRequest="150"
+                                            >
+
+                                        </components:GradientProgressBar>
+                                </StackLayout>
+                       </Grid>
+                   </Frame>
+
+                  <Frame Grid.Row="1"
+                          Grid.Column="1"
+                          HasShadow="False"
+                          CornerRadius="20"
+                          HeightRequest="165"
+                          BackgroundColor="{DynamicResource DetailsBoxColor}"
+                          >
+                       <Grid HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             RowDefinitions="Auto,*">
+                                <StackLayout Grid.Row="0" Orientation="Vertical"
+                                             Spacing="10">
+                                    <Label
+                                     Text="STATUS"
+                                     Style="{StaticResource ProjectDetailBoxHeaderStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                      <Label 
+                                     Text="{Binding Status}"
+                                     TextColor="{Binding Status,Converter={StaticResource StatusColorConverter}}"
+                                     FontSize="25"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                   
+                                </StackLayout>
+                                <Label
+                                    Grid.Row="1"
+                                     VerticalTextAlignment="End"
+                                     VerticalOptions="EndAndExpand"
+                                     Text="{Binding StatusChangedText}"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="CharacterWrap"></Label>
+                       </Grid>
+                   </Frame>
+
+                  <Frame Grid.Row="2"
+                          Grid.Column="0"
+                          HasShadow="False"
+                          CornerRadius="20"
+                          HeightRequest="165"
+                          BackgroundColor="{DynamicResource DetailsBoxColor}"
+                          >
+                       <Grid HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             RowDefinitions="Auto,*">
+                                <StackLayout Grid.Row="0" Orientation="Vertical"
+                                             Spacing="10">
+                                    <Label
+                                     Text="TIMELINE"
+                                     Style="{StaticResource ProjectDetailBoxHeaderStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                      <Label 
+                                     Text="{Binding TimeLine}"
+                                     FontSize="25"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                   
+                                </StackLayout>
+                           <Grid
+                               Grid.Row="1"
+                               VerticalOptions="EndAndExpand"
+                               RowDefinitions="Auto,Auto"
+                                 ColumnDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                     VerticalTextAlignment="End"
+                                     VerticalOptions="EndAndExpand"
+                                     FontSize="13"
+                                     Text="{Binding BaseLineStartDate}"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="CharacterWrap"></Label>
+                               <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                     VerticalTextAlignment="End"
+                                     VerticalOptions="EndAndExpand"
+                                     Text="Start"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="CharacterWrap"></Label>
+                               <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                     VerticalTextAlignment="End"
+                                     VerticalOptions="EndAndExpand"
+                                   FontSize="13"
+                                     Text="{Binding BaseLineEndDate}"
+                                     Style="{StaticResource ProjectNameStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="End"
+                                     LineBreakMode="CharacterWrap"></Label>
+                               <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                     VerticalTextAlignment="End"
+                                     VerticalOptions="EndAndExpand"
+                                     Text="End"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="End"
+                                     LineBreakMode="CharacterWrap"></Label>
+                           </Grid>
+                            
+                       </Grid>
+                   </Frame>
+
+                  <Frame Grid.Row="2"
+                          Grid.Column="1"
+                          HasShadow="False"
+                          CornerRadius="20"
+                          HeightRequest="165"
+                          BackgroundColor="{DynamicResource DetailsBoxColor}"
+                          >
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" Padding="0" Margin="0" Spacing="1">
+                            <Label
+                                     Text="PROJECT HEALTH"
+                                     Style="{StaticResource ProjectDetailBoxHeaderStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Center"
+                                     LineBreakMode="WordWrap"></Label>
+                                <Image x:Name="ibutton" Source="Info.png" Aspect="AspectFit"
+                                       HorizontalOptions="EndAndExpand"></Image>
+                             </StackLayout>
+                             <components:GaugeComponent x:Name="Chart1"  Grid.Column="0"
+                               HeightRequest="160" MarkerValue="{Binding BindingContext.OverallHealth, Source={x:Reference mainGrid}}"></components:GaugeComponent>
+                        </StackLayout>
+                      <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Command="{Binding ShowProjectHealth}"></TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                   </Frame>
+
+                 <Frame x:Name="budgetBlock" Grid.Row="3"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          HasShadow="False"
+                          CornerRadius="20"
+                          HeightRequest="80"
+                          BackgroundColor="{DynamicResource DetailsBoxColor}"
+                          >
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand" Spacing="15">
+                             <Label
+                                     Text="BUDGET PROJECTION"
+                                     Style="{StaticResource ProjectDetailBoxHeaderStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                              <Label
+                                     FontSize="13"
+                                     Text="{Binding BudgetProjectionText}"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                        </StackLayout>
+                   </Frame>
+
+                  <Frame x:Name="projectleadBlock" Grid.Row="4"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          HasShadow="False"
+                          CornerRadius="20"
+                          HeightRequest="80"
+                          BackgroundColor="{DynamicResource DetailsBoxColor}"
+                          >
+                        <Grid HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              RowDefinitions="Auto,Auto"
+                              ColumnDefinitions="*,*,*"
+                              ColumnSpacing="15"
+                              RowSpacing="20">
+                                <StackLayout
+                            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                             <Label
+                                     Text="PROJECT LEAD"
+                                     Style="{StaticResource ProjectDetailBoxHeaderStyle}"
+                                     HorizontalOptions="StartAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                              <Label
+                                     FontSize="13"
+                                     Text="{Binding ProjectLeadName}"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="EndAndExpand"
+                                     HorizontalTextAlignment="End"
+                                     LineBreakMode="WordWrap"></Label>
+                            </StackLayout>
+                                <Frame
+
+                            HasShadow="False"
+                            BackgroundColor="{DynamicResource ControlSelectedBackgroundColor}"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            IsClippedToBounds="True"
+                            CornerRadius="10"
+                            Margin="0"
+                            Padding="5" >
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                        Spacing="0" Orientation="Vertical">
+                                <Image
+                            
+                                Source="Envelope.png"
+                                VerticalOptions="CenterAndExpand"
+                                Aspect="AspectFit"></Image>
+                            <Label Text="Email"  Style="{StaticResource SubDescStyle}" TextColor="{DynamicResource SelectedTextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                         
+                            </Label>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EmailCommand}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                                <Frame
+
+                            HasShadow="False"
+                            BackgroundColor="{DynamicResource ControlSelectedBackgroundColor}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            IsClippedToBounds="True"
+                            CornerRadius="10"
+                            Margin="0"
+                            Padding="5" >
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                        Spacing="0" Orientation="Vertical">
+                                <Image
+                            
+                                Source="Phone.png"
+                                VerticalOptions="CenterAndExpand"
+                                Aspect="AspectFit"></Image>
+                            <Label Text="Phone"  Style="{StaticResource SubDescStyle}" TextColor="{DynamicResource SelectedTextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                         
+                            </Label>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PhoneCommand}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                                <Frame
+
+                            HasShadow="False"
+                            BackgroundColor="{DynamicResource ControlSelectedBackgroundColor}"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            IsClippedToBounds="True"
+                            CornerRadius="10"
+                            Margin="0"
+                            Padding="5" >
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                            Spacing="0" Orientation="Vertical">
+                                    <Image
+                            
+                                    Source="Chats.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    Aspect="AspectFit"></Image>
+                                <Label Text="Message"  Style="{StaticResource SubDescStyle}" TextColor="{DynamicResource SelectedTextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                         
+                                </Label>
+                                </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChatCommand}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            </Frame>
+
+                        </Grid>
+
+                  </Frame>
+
+                 <StackLayout x:Name="projectDetailsBlock"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              Grid.Row="5"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"
+                              Margin="10,10,10,0"
+                              Orientation="Vertical" Spacing="15">
+                       <Label 
+                   Text="Project Details"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Start" Style="{StaticResource SubTitle}"></Label>
+                     <Label
+                    
+                     Grid.Column="0"
+                     Text="{Binding Description}"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+           
+                 </StackLayout>
+
+             </Grid>
+
+                 </SwipeView>
+              </ScrollView>
+    </Grid>
+            
+    </ContentPage.Content>
+</ContentPage>

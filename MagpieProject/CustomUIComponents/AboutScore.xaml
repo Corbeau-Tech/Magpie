@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MagpieProject.CustomUIComponents.AboutScore">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              ColumnDefinitions="Auto,1,*"
+              RowDefinitions="Auto,Auto,Auto,Auto" Margin="30,10,20,20" RowSpacing="20" ColumnSpacing="20">
+                <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource BodyText}"
+                            Text="90-100" />
+             <Label
+                    
+                     Grid.Row="0"
+                     Grid.Column="2"
+                     Text="Excellent"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+            <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource BodyText}"
+                            Text="70-89" />
+              <Label
+                    
+                     Grid.Row="1"
+                     Grid.Column="2"
+                     Text="Very Good"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+            <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource BodyText}"
+                            Text="50-69" />
+              <Label
+                    
+                     Grid.Row="2"
+                     Grid.Column="2"
+                     Text="Good"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+            <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource BodyText}"
+                            Text="25-49" />
+              <Label
+                    
+                     Grid.Row="3"
+                     Grid.Column="2"
+                     Text="Needs improvement"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+            <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource BodyText}"
+                            Text="0-24" />
+              <Label
+                    
+                     Grid.Row="4"
+                     Grid.Column="2"
+                     Text="Poor"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+             <BoxView  Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" HeightRequest="1" WidthRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Color="#DDDDDD" ></BoxView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

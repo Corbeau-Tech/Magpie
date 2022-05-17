@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customuicomponents="clr-namespace:MagpieProject.CustomUIComponents"
+    x:Class="MagpieProject.CustomUIComponents.DetailHeader">
+    <ContentView.Content>
+        <StackLayout x:Name="mainGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid 
+            HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+                Margin="20,40,20,20"
+            
+              ColumnDefinitions="Auto,*,Auto"
+              RowDefinitions="Auto">
+
+                <StackLayout Grid.Row="0"
+                  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Padding="5">
+              <Image
+                  VerticalOptions="Center"
+                  Source="Back.png"
+                  Aspect="AspectFit">
+                  
+              </Image>
+                    <StackLayout.GestureRecognizers>
+                      <TapGestureRecognizer Tapped="Back_Tapped"></TapGestureRecognizer>
+                  </StackLayout.GestureRecognizers>
+                    </StackLayout>
+               <Grid Grid.Row="0"
+                  Grid.Column="1"
+                  RowSpacing="2"
+                  Margin="10,0,0,0"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                  RowDefinitions="Auto,Auto">
+                 <Label x:Name="projectNamelbl"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Text="{Binding ProjectName}"
+                     TextColor="White"
+                     Style="{StaticResource ProjectNameStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+
+            <Label x:Name="subdesclbl"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                        TextColor="White"
+                     Text="{Binding ProjectDescription}"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+            </Grid>
+            <customuicomponents:UsersGroup x:Name="userGroup" Grid.Row="0"
+                                           Grid.Column="2"
+                                           HorizontalOptions="EndAndExpand"
+                                           VerticalOptions="FillAndExpand">
+                <customuicomponents:UsersGroup.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </customuicomponents:UsersGroup.GestureRecognizers>
+            </customuicomponents:UsersGroup>
+        </Grid>
+            </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:components="clr-namespace:MagpieProject.Components" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:controls="clr-namespace:XFGauge.Controls" xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
+    x:Class="MagpieProject.Views.TestComponentPage" BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="200,150,200" RowDefinitions="Auto,Auto" HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <!--<forms:ChartView x:Name="Chart1"  Grid.Column="0"
+                               HeightRequest="150" WidthRequest="150"/>-->
+
+            
+
+            <components:GradientProgressBar
+                Grid.Row="1"
+                Margin="20"
+                BarBackgroundColor="#C4C4C4"
+                CornerRadius="15"
+                FontSize="18"
+                
+                GradientEndColor="#5AC53A"
+                GradientStartColor="#5AC53A"
+                HeightRequest="30"
+                Percentage="{Binding Percentage}"
+                
+                TextColor="White"
+                WidthRequest="150"
+                >
+
+            </components:GradientProgressBar>
+            <components:GaugeComponent Grid.Row="2" MarkerValue="90"></components:GaugeComponent>
+                        <!--<Grid Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                  RowDefinitions="Auto,1,Auto">
+                <Label
+                        Grid.Row="0"
+                               Text="70"
+                               FontSize="60"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" Style="{StaticResource SubTitle}"
+                               TextColor="#5AC53A"
+                    ></Label>
+                 <BoxView  Grid.Row="1"  HeightRequest="1" WidthRequest="70" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Color="#6A718E" ></BoxView>
+                 <Label
+                        Grid.Row="2"
+                               Text="100"
+                               FontSize="20"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" Style="{StaticResource SubTitle}"
+                               TextColor="#6A718E"
+                    ></Label>
+            </Grid>
+            <gauge:SfCircularGauge Grid.Row="2" GaugeType="Default" BackgroundColor="Transparent"
+                                   HeightRequest="200"><gauge:SfCircularGauge.Scales>
+                <gauge:Scale x:Name="scale" ShowLabels="false" StartValue="0" EndValue="100" Interval="10"  MinorTicksPerInterval="2" 
+                            ShowRim="False">
+                     <gauge:Scale.Pointers>
+             <gauge:MarkerPointer Value="70" Color="#5AC53A" MarkerHeight="30" MarkerWidth="30" />
+         </gauge:Scale.Pointers>
+                      <gauge:Scale.MinorTickSettings>
+                    <gauge:TickSettings Thickness="4" Length="20" Offset = "1" />
+                </gauge:Scale.MinorTickSettings>
+                     <gauge:Scale.MajorTickSettings>
+                    <gauge:TickSettings Thickness="4" Length="20" Offset = "1" />
+                </gauge:Scale.MajorTickSettings>
+                </gauge:Scale>
+            </gauge:SfCircularGauge.Scales>
+                <gauge:SfCircularGauge.Headers>
+            <gauge:Header Text="70" Position="0.5, 0.4" ForegroundColor="#5AC53A" FontAttributes="Bold" TextSize="40"/>
+                    
+                      <gauge:Header Text="-" Position="0.5, 0.5" ForegroundColor="#6A718E" TextSize="210" />
+            <gauge:Header Text="100" Position="0.5, 0.7" ForegroundColor="#6A718E" FontAttributes="Bold" TextSize="20"/>
+        </gauge:SfCircularGauge.Headers>
+            </gauge:SfCircularGauge>-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

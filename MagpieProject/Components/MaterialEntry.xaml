@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:components="clr-namespace:MagpieProject.Components"
+    x:Class="MagpieProject.Components.MaterialEntry">
+    <ContentView.Content>
+        <Frame
+            x:Name="mainFrame"
+             IsClippedToBounds="True"
+             Padding="0"
+            Grid.Row="0"
+                Margin="20,10,20,10"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                BorderColor="#DDDDDD"
+                HasShadow="False"
+                BackgroundColor="{AppThemeBinding Dark=#ffffff, Light=#ffffff}"
+                >
+            <Frame.Triggers>
+                <DataTrigger TargetType="Frame" Binding="{Binding IsError}" Value="True">
+                    <Setter Property="BorderColor" Value="#ED6D6D"></Setter>
+                </DataTrigger>
+            </Frame.Triggers>
+            <Grid x:Name="innerGrid"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                    RowDefinitions="60"
+                      ColumnDefinitions="Auto,1,*">
+                <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="15,0,10,0" >
+                <Image  x:Name="ImageField" Aspect="AspectFit" Source="{Binding imgSource}" HeightRequest="13" WidthRequest="16"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                    </StackLayout>
+                <BoxView Grid.Column="1" WidthRequest="1" Color="#DDDDDD">
+                    <BoxView.Triggers>
+                <DataTrigger TargetType="BoxView" Binding="{Binding IsError}" Value="True">
+                    <Setter Property="Color" Value="#ED6D6D"></Setter>
+                </DataTrigger>
+            </BoxView.Triggers>
+                </BoxView>
+                <Grid Grid.Column="2" Margin="5,8" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" >
+                    <Label Grid.Row="0" Grid.Column="0" x:Name="HiddenLabel" FontSize="10" IsVisible="False" Margin="0" Grid.ColumnSpan="2">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding IsError}" Value="True">
+                                <Setter Property="TextColor" Value="#ED6D6D"></Setter>
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                   <components:BorderlessEntry Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" x:Name="EntryField"
+                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                               Text="{Binding Text, Mode=TwoWay}" PlaceholderColor="#717171" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="False">
+                        <components:BorderlessEntry.Triggers>
+                            <DataTrigger TargetType="components:BorderlessEntry"
+                     Binding="{Binding Source={x:Reference HiddenLabel},
+                                       Path=IsVisible}"
+                     Value="True">
+                                <Setter Property="Grid.RowSpan" Value="1" />
+                                <!-- multiple Setters elements are allowed -->
+                            </DataTrigger>
+                            <DataTrigger TargetType="components:BorderlessEntry"
+                     Binding="{Binding Source={x:Reference HiddenLabel},
+                                       Path=IsVisible}"
+                     Value="False">
+                                <Setter Property="Grid.RowSpan" Value="2" />
+                                <!-- multiple Setters elements are allowed -->
+                            </DataTrigger>
+                        </components:BorderlessEntry.Triggers>
+                           </components:BorderlessEntry>
+                       
+                 
+                     <Image Source="Eye.png" Grid.Row="1" Grid.Column="1"  Aspect="AspectFit" HorizontalOptions="EndAndExpand"
+                               VerticalOptions="CenterAndExpand" HeightRequest="18" WidthRequest="18" 
+                               IsVisible="{Binding IsPassword}" Margin="0,5,10,0">
+                            <Image.Triggers>
+                                
+                                <DataTrigger TargetType="Image" Binding="{Binding IsPasswordVisible}" Value="True">
+                                    <Setter Property="Source" Value="EyeSlash.png"></Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="showpassword_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                      
+                </Grid>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

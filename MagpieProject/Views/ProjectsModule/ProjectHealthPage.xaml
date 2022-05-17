@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rg:PopupPage
+ xmlns:rg="http://rotorgames.com"    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:components="clr-namespace:MagpieProject.Components" xmlns:converters="clr-namespace:MagpieProject.Converters" xmlns:customuicomponents="clr-namespace:MagpieProject.CustomUIComponents"
+    x:Class="MagpieProject.Views.ProjectsModule.ProjectHealthPage"
+     CloseWhenBackgroundIsClicked="True"
+    Opacity="1"
+    >
+     <rg:PopupPage.Resources>
+        <ResourceDictionary>
+          <converters:ProjectHealthRangeConverter x:Key="ProjectHealthRangeConverter"/>
+        </ResourceDictionary>
+    </rg:PopupPage.Resources>
+     <rg:PopupPage.Animation>
+         <rg:MoveAnimation PositionIn="Bottom" PositionOut="Bottom" />
+    </rg:PopupPage.Animation>
+
+    <rg:PopupPage.Content>
+         <Frame Padding="0"
+              x:Name="mainFrame"
+               HasShadow="False"
+               BorderColor="{DynamicResource BoxViewColor}"
+                 Margin="0,5,0,0"
+               CornerRadius="20"
+                HorizontalOptions="FillAndExpand"
+            VerticalOptions="Start"
+               >
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              RowDefinitions="50,*"
+              >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                  RowDefinitions="Auto,1"
+                  ColumnDefinitions="Auto,*"
+                  Margin="20,20,20,0">
+                <Image HorizontalOptions="Start"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                   WidthRequest="18"
+                   HeightRequest="18"
+                   Source="{DynamicResource closeicon}"> 
+                  <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+                 </Image>
+                  <Label
+                        Grid.Row="0"
+                    Grid.Column="1"
+                               Text="Project Health"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" Style="{StaticResource SubTitle}"
+                                Margin="-20,0,0,5">
+                               
+                             </Label>
+                 <BoxView   Grid.Row="1"
+                    Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" WidthRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Color="#DDDDDD"  Margin="-20,0,-20,0" ></BoxView>
+            </Grid>
+            <ScrollView Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        >
+                <Grid HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      RowDefinitions="Auto,Auto,Auto,Auto">
+                     <StackLayout Grid.Row="0"
+                                  Margin="20"
+                          >
+                          <components:GaugeComponent x:Name="Chart1"  Grid.Column="0"
+                               HeightRequest="150" WidthRequest="150" MarkerValue="{Binding BindingContext.OverallHealth, Source={x:Reference mainFrame}}"></components:GaugeComponent>
+                            <Label 
+                               Text="Very Healthy"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center" Style="{StaticResource SubTitle}">
+
+                             </Label>
+                           <Label
+                    
+                     Text="The overall project health for Project Name is based on the following knowledge areas scores."
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+                          
+                      
+                   </StackLayout>
+                    <StackLayout Grid.Row="1"
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                BackgroundColor="{DynamicResource DetailsBoxColorWithoutdark}" >
+                         <Label
+                             Margin="20"
+                               Text="Score Details"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Start" Style="{StaticResource SubTitle}">
+
+                             </Label>
+                         <StackLayout
+                             Margin="20,0,20,0"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 x:Name="ScoreDetailsList"
+                                 BindableLayout.ItemsSource="{Binding ScoreDetailList}"
+                                 >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                 <StackLayout Grid.Row="2" Orientation="Vertical"
+                                             Spacing="5" Margin="0,0,0,10">
+                                    <Label
+                                     Text="{Binding TitleName}"
+                                     Style="{StaticResource SubDescStyle}"
+                                     HorizontalOptions="FillAndExpand"
+                                     HorizontalTextAlignment="Start"
+                                     LineBreakMode="WordWrap"></Label>
+                                     <Grid
+                                           RowDefinitions="Auto" ColumnDefinitions="*,Auto"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand">
+                                            <components:GradientProgressBar
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            BarBackgroundColor="#C4C4C4"
+                                            CornerRadius="15"
+                                            FontSize="10"
+                                            GradientEndColor="{Binding Percentage,Converter={StaticResource ProjectHealthRangeConverter}}"
+                                            GradientStartColor="{Binding Percentage,Converter={StaticResource ProjectHealthRangeConverter}}"
+                                            HeightRequest="10"
+                                            Percentage="{Binding Percentage}"
+                                            TextColor="White"
+                                            AlternativeTextColor="White"
+                                            
+                                            >
+                                                
+                                        </components:GradientProgressBar>
+                                          <Image Grid.Column="1"
+                                              HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="CaretLeft.png" HeightRequest="18" WidthRequest="18">
+                                      </Image>
+                                     </Grid>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.ScoreDetailTapped, Source={x:Reference mainFrame}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    </StackLayout>
+                    <customuicomponents:HealthProjectGraph
+                            Grid.Row="2"
+                            HeightRequest="260"
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        AnnotationValue="{Binding OverallHealth}">
+
+                    </customuicomponents:HealthProjectGraph>
+                     <StackLayout Grid.Row="3"
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                BackgroundColor="{DynamicResource DetailsBoxColorWithoutdark}" >
+                         <Label
+                             Margin="20"
+                               Text="About Score"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Start" Style="{StaticResource SubTitle}">
+
+                             </Label>
+                         <customuicomponents:AboutScore HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand"></customuicomponents:AboutScore>
+                       
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+             </Frame>
+    </rg:PopupPage.Content>
+</rg:PopupPage>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MagpieProject.Themes.LightTheme">
+       <Color x:Key="PageBackgroundColor1">White</Color>
+     <Color x:Key="PageBackgroundColor2">White</Color>
+     <Color x:Key="PageBackgroundColor3">White</Color>
+   <Color x:Key="LoginPageFillGradient1">#7B39F5</Color>
+     <Color x:Key="LoginPageFillGradient2">#40C3FD</Color>
+      <Color x:Key="LoginPageFillGradient3">#626DD8</Color>
+    <Color x:Key="TextColor">#717171</Color>
+     <Color x:Key="TextColorBlue">#7D89FC</Color>
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
+      <Color x:Key="GreyColor">#909090</Color>
+          <Color x:Key="BoxViewColor">#DDDDDD</Color>
+              <Color x:Key="ShadowColor">#DDDDDD</Color>
+     
+       <Color x:Key="ProfileBackgroundColor">#FFFFFF</Color>
+      <Color x:Key="ButtonTextColor">#626DD8</Color>
+        <Color x:Key="ButtonBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="SelectedTextColor">White</Color>
+     <Color x:Key="ControlBackgroundColor">#DDDDDD</Color>
+     <Color x:Key="ControlSelectedBackgroundColor">#7D89FC</Color>
+     <Color x:Key="ButtonSolidBackgroundColor">#7D89FC</Color>
+    <Color x:Key="HeaderFillGradient1">#7B39F5</Color>
+     <Color x:Key="HeaderFillGradient2">#40C3FD</Color>
+     <Color x:Key="HeaderFillGradient3">#626DD8</Color>
+     <Color x:Key="BorderClr">Transparent</Color>
+
+    <!--ProjectsLandingPage-->
+     <Color x:Key="ProjectsLandingPageBackground1">#7B39F5</Color>
+     <Color x:Key="ProjectsLandingPageBackground2">#40C3FD</Color>
+        <Color x:Key="ProjectsLandingPageBackground3">#626DD8</Color>
+     <!-- Colors for the tab bar -->
+    <Color x:Key="TabBarBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="TabBarTitleColor">#7D89FC</Color>
+    <Color x:Key="TabBarUnselectedColor">#828282</Color>
+    <Color x:Key="PrimaryActionColor">#818DFE</Color>
+    <Color x:Key="WindowBackgroundColor">#FFFFFF</Color>
+      <Color x:Key="TabBarForegroundColor">#FFFFFF</Color>
+         
+    
+     <Color x:Key="ProjectCardBackgroundColor1">#FFFFFF</Color>
+     <Color x:Key="ProjectCardBackgroundColor2">#FFFFFF</Color>
+        <Color x:Key="ProjectCardBackgroundColor3">#FFFFFF</Color>
+       <Color x:Key="BadgeColor">#626DD8</Color>
+    <Color x:Key="DetailsBoxColor">#F2F2F2</Color>
+     <Color x:Key="DetailsBoxColorWithoutdark">#F2F2F2</Color>
+
+     <ImageSource x:Key="closeicon">Close.png</ImageSource>
+</ResourceDictionary>

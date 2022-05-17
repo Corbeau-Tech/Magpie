@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms" xmlns:converters="clr-namespace:MagpieProject.Converters"
+    x:Class="MagpieProject.Components.GaugeComponent">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:RangeColorConverter x:Key="RangeColorConverter"></converters:RangeColorConverter>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+              RowDefinitions="150">
+            <Grid Grid.Row="0"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                  RowDefinitions="Auto,1,Auto">
+                <Label
+                        Grid.Row="0"
+                               Text="{Binding MarkerValue}"
+                               FontSize="40"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" Style="{StaticResource SubTitle}"
+                               TextColor="{Binding MarkerValue,Converter={StaticResource RangeColorConverter}}"
+                    ></Label>
+                 <BoxView  Grid.Row="1"  HeightRequest="1" WidthRequest="70" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Color="#6A718E" ></BoxView>
+                 <Label
+                        Grid.Row="2"
+                               Text="100"
+                               FontSize="20"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" Style="{StaticResource SubTitle}"
+                               TextColor="#6A718E"
+                    ></Label>
+            </Grid>
+            <gauge:SfCircularGauge Grid.Row="0" GaugeType="Default" BackgroundColor="Transparent"
+                                   HeightRequest="200"><gauge:SfCircularGauge.Scales>
+                <gauge:Scale x:Name="scale" ShowLabels="false" StartValue="0" EndValue="100" Interval="10"  MinorTicksPerInterval="2" 
+                            ShowRim="False">
+                     <gauge:Scale.Pointers>
+             <gauge:MarkerPointer Value="{Binding MarkerValue}" Color="{Binding MarkerValue,Converter={StaticResource RangeColorConverter}}" MarkerHeight="20" MarkerWidth="20" />
+         </gauge:Scale.Pointers>
+                      <gauge:Scale.MinorTickSettings>
+                    <gauge:TickSettings Thickness="4" Length="20" Offset = "1" />
+                </gauge:Scale.MinorTickSettings>
+                     <gauge:Scale.MajorTickSettings>
+                    <gauge:TickSettings Thickness="4" Length="20" Offset = "1" />
+                </gauge:Scale.MajorTickSettings>
+                </gauge:Scale>
+            </gauge:SfCircularGauge.Scales>
+                <!--<gauge:SfCircularGauge.Headers>
+            <gauge:Header Text="70" Position="0.5, 0.4" ForegroundColor="#5AC53A" FontAttributes="Bold" TextSize="40"/>
+                    
+                      <gauge:Header Text="-" Position="0.5, 0.5" ForegroundColor="#6A718E" TextSize="210" />
+            <gauge:Header Text="100" Position="0.5, 0.7" ForegroundColor="#6A718E" FontAttributes="Bold" TextSize="20"/>
+        </gauge:SfCircularGauge.Headers>-->
+            </gauge:SfCircularGauge>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

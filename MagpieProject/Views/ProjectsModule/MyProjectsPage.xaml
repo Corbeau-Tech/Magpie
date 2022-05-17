@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewcell="clr-namespace:MagpieProject.Views.ProjectsModule.ViewCells"
+    x:Class="MagpieProject.Views.ProjectsModule.MyProjectsPage"
+     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:mvp="clr-namespace:MagpieProject.Utilities"
+    xmlns:controls="clr-namespace:MagpieProject.CustomUIComponents"
+   Style="{StaticResource ProjectsTabbarPadding}"
+    x:Name="myproject"
+    >
+    <ContentView.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     BindableLayout.ItemsSource="{Binding MyProjectList}"
+                    
+                   >
+             <!--xct:StateLayout.CurrentState="{Binding CurrentState}"
+                  xct:StateLayout.AnimateStateChanges="False"
+                  xct:StateLayout.CurrentCustomStateKey="{Binding CustomStateKey}"-->
+        <!--<xct:StateLayout.StateViews>
+                    <xct:StateView StateKey="Loading"
+                                   RepeatCount="3"
+                                    >
+                       <xct:StateView.Template>
+                           <DataTemplate>
+                               <controls:EmptyState Title="Empty"
+                                             Description="Desc"
+                                             ImageSource="UserCircle.png"
+                                             />
+                           </DataTemplate>
+                       </xct:StateView.Template>
+                        </xct:StateView>
+
+                    <xct:StateView StateKey="Empty"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" >
+                        <controls:EmptyState Title="Empty"
+                                             Description="Desc"
+                                             ImageSource="UserCircle.png"
+                                             />
+                    </xct:StateView>
+
+                    <xct:StateView StateKey="Error"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" >
+                        <controls:EmptyState Title="Empty"
+                                             Description="Desc"
+                                             ImageSource="UserCircle.png"
+                                             />
+                    </xct:StateView>
+
+                    <xct:StateView StateKey="Custom"
+                                   CustomStateKey="{x:Static mvp:StateKeys.Offline}"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" >
+                        <controls:EmptyState Title="Empty"
+                                             Description="Desc"
+                                             ImageSource="UserCircle.png"
+                                            />
+                    </xct:StateView>
+                </xct:StateLayout.StateViews>-->
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <viewcell:ProjectCardViewCell>
+                        <viewcell:ProjectCardViewCell.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.ProjectTapped, Source={x:Reference myproject}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </viewcell:ProjectCardViewCell.GestureRecognizers>
+                    </viewcell:ProjectCardViewCell>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+            </ScrollView>
+    </ContentView.Content>
+</ContentView>

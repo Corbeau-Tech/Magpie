@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:MagpieProject.Converters"
+    x:Class="MagpieProject.Views.ProjectsModule.ViewCells.ProjectCardViewCell">
+     <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:RangeColorConverter x:Key="RangeColorConverter" />
+            <converters:RagStatusConverter x:Key="RagStatusConverter"></converters:RagStatusConverter>
+        </ResourceDictionary>
+    </ContentView.Resources>
+   
+    <ContentView.Content>
+        <Frame IsClippedToBounds="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+               CornerRadius="10"
+               Margin="15,10,15,5"
+               Padding="5"
+               HasShadow="False"
+               BackgroundColor="{DynamicResource WhiteColor}">
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              ColumnDefinitions="*,Auto"
+              
+              Margin="10"
+              Padding="5">
+            <Grid Grid.Row="0"
+                  Grid.Column="0"
+                  RowSpacing="10"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                  RowDefinitions="Auto,Auto">
+                 <Label x:Name="projectNamelbl"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Text="{Binding ProjectName}"
+                     Style="{StaticResource ProjectNameStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+
+            <Label x:Name="subdesclbl"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Text="{Binding ProjectShortDescription}"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+            </Grid>
+              <Grid Grid.Row="0"
+                  Grid.Column="1"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                  RowDefinitions="Auto,Auto">
+            <Frame x:Name="rangeframe"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="0"
+                   IsClippedToBounds="True"
+                   HasShadow="False"
+                   CornerRadius="15"
+                   Padding="10,7,10,7"
+                   BackgroundColor="{Binding RangeValue,Converter={StaticResource RangeColorConverter}}"
+                >
+                
+                <Label x:Name="valuelbl"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="FillAndExpand"
+                       Style="{StaticResource RangeLabelStyle}"
+                       >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding RangeValue}"></Span>
+                             <Span Text="/100"></Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
+
+            <Grid x:Name="trendStatusGrid"
+                  Grid.Row="1"
+                  Grid.Column="0" Margin="15,0,10,0"
+                  ColumnDefinitions="Auto,Auto"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+                   <Label x:Name="staticTrendlbl"
+                          Grid.Column="0"
+                          Text="TREND"
+                          VerticalTextAlignment="Center"
+                          Style="{StaticResource TrendLabelStyle}"
+                          HorizontalOptions="FillAndExpand"></Label>
+                    <Image x:Name="imgRAGStatus"
+                           Grid.Column="1"
+                           HeightRequest="18"
+                           WidthRequest="18"
+                           Source="{Binding RangeValue,Converter={StaticResource RagStatusConverter}}"
+                           VerticalOptions="CenterAndExpand"
+                           Aspect="AspectFit"></Image>
+            </Grid>
+                  </Grid>
+        </Grid>
+            <Frame.Background>
+                  <LinearGradientBrush  >
+                        <GradientStop Color="{DynamicResource ProjectCardBackgroundColor1}"
+                          Offset="0.1"/>
+
+                        <GradientStop Color="{DynamicResource ProjectCardBackgroundColor2}"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+            </Frame.Background>
+            </Frame>
+    </ContentView.Content>
+</ContentView>

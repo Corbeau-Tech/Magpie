@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    x:Class="MagpieProject.Styles.GeneralDevicesStyle"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!--#region Updated Style-->
+
+    <Color x:Key="neutral_300">#646464</Color>
+    <Color x:Key="neutral_50">#E4E4E4</Color>
+    <x:Double x:Key="iosFontSizeBig">28</x:Double>
+    <x:Double x:Key="iosFontSizeSmall">18</x:Double>
+     <x:Double x:Key="iosFontSizeMedium">25</x:Double>
+      <x:Double x:Key="iosFontSizeMini1">16</x:Double>
+      <x:Double x:Key="iosFontSizeMini2">13</x:Double>
+      <x:Double x:Key="iosFontSizeMini3">11</x:Double>
+      <x:Double x:Key="androidFontSizeBig">25</x:Double>
+    <x:Double x:Key="androidFontSizeSmall">15</x:Double>
+     <x:Double x:Key="androidFontSizeMedium">22</x:Double>
+      <x:Double x:Key="androidFontSizeMini1">16</x:Double>
+      <x:Double x:Key="androidFontSizeMini2">13</x:Double>
+      <x:Double x:Key="androidFontSizeMini3">11</x:Double>
+     <Style x:Key="ProjectsTabbarPadding" TargetType="ContentView">
+        <Setter Property="Padding" Value="{OnPlatform iOS='0,0,0,80', Android='0,0,0,0'}" />
+    </Style>
+      <Style TargetType="Page"
+             ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark=#ffffff, Light=#F2F2F2}"/>
+        </Style>
+        <Style x:Key="HeaderTitleStyle" TargetType="Label"
+             ApplyToDerivedTypes="True">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Dark=#ffffff, Light=#FFFFFF}"/>
+            <Setter Property="FontSize"
+                Value="{OnPlatform iOS={StaticResource iosFontSizeBig},Android={StaticResource androidFontSizeBig}}"/>
+            
+            <Setter Property="FontFamily" Value="GTAmericaRegular"></Setter>
+        </Style>
+       <Style x:Key="H2TitleStyle" TargetType="Label"
+             ApplyToDerivedTypes="True">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Dark=#222222, Light=#707070}"/>
+            <Setter Property="FontSize"
+                Value="{OnPlatform iOS={StaticResource iosFontSizeBig},Android={StaticResource androidFontSizeBig}}"/>
+
+            <Setter Property="FontFamily" Value="GTAmericaMedium"></Setter>
+        </Style>
+
+       <!--ProfilePageStyles-->
+        <Style x:Key="SubTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeSmall},Android={StaticResource androidFontSizeSmall}}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+    </Style>
+          <Style x:Key="H2TitleWithWhiteColor" TargetType="Label">
+        <Setter Property="FontSize"
+                Value="{OnPlatform iOS={StaticResource iosFontSizeMedium},Android={StaticResource androidFontSizeMedium}}"/>
+
+            <Setter Property="FontFamily" Value="GTAmericaMedium"></Setter>
+        <Setter Property="TextColor" Value="{DynamicResource WhiteColor}" />
+    </Style>
+         <Style x:Key="SubTitleWithWhiteColor" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeSmall},Android={StaticResource androidFontSizeSmall}}" />
+        <Setter Property="TextColor" Value="{DynamicResource WhiteColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+    </Style>
+        <Style x:Key="SubTitleT1" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini3},Android={StaticResource androidFontSizeMini3}}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+         <Setter Property="FontFamily" Value="GTAmericaMedium" />
+       </Style>
+        <Style x:Key="BodyText" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini1},Android={StaticResource androidFontSizeMini1}}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+         <Setter Property="FontFamily" Value="GTAmericaMedium" />
+       </Style>
+
+         <Style x:Key="SmallTitleBold" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini3},Android={StaticResource androidFontSizeMini3}}" />
+        <Setter Property="TextColor" Value="{DynamicResource GreyColor}" />
+         <Setter Property="FontFamily" Value="GTAmericaBold" />
+       </Style>
+
+        <Style x:Key="ButtonBorderStyle" TargetType="Button">
+
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
+        <Setter Property="BorderColor" Value="{DynamicResource ButtonTextColor}" />
+        
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="Visual">
+            <Setter.Value>
+                <OnPlatform Android="Default" iOS="Material" />
+            </Setter.Value>
+        </Setter>
+            </Style>
+         <Style x:Key="ButtonSolidStyle" TargetType="Button">
+
+        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonSolidBackgroundColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}" />
+      
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+        <Setter Property="Visual">
+            <Setter.Value>
+                <OnPlatform Android="Default" iOS="Material" />
+            </Setter.Value>
+        </Setter>
+        </Style>
+        
+   
+        <Style x:Key="TabTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini1},Android={StaticResource androidFontSizeMini1}}" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+    </Style>
+       <!-- End ProfilePageStyles-->
+
+       <!--Project Car Style-->
+         <Style x:Key="ProjectNameStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeSmall},Android={StaticResource androidFontSizeSmall}}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaBold" />
+    </Style>
+
+            <Style x:Key="SubDescStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini2},Android={StaticResource androidFontSizeMini2}}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaRegular" />
+    </Style>
+         <Style x:Key="RangeLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini2},Android={StaticResource androidFontSizeMini2}}" />
+        <Setter Property="TextColor" Value="{DynamicResource WhiteColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaBold" />
+    </Style>
+        <Style x:Key="TrendLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini3},Android={StaticResource androidFontSizeMini3}}" />
+        <Setter Property="TextColor" Value="{DynamicResource GreyColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+    </Style>
+            <Style x:Key="ProjectDetailBoxHeaderStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform iOS={StaticResource iosFontSizeMini2},Android={StaticResource androidFontSizeMini2}}" />
+        <Setter Property="TextColor" Value="{DynamicResource GreyColor}" />
+        <Setter Property="FontFamily" Value="GTAmericaMedium" />
+    </Style>
+
+       <!--End Project Car Style--> 
+       <Color x:Key="WindowBackgroundColor">#FFFFFF</Color>
+
+       <Style x:Key="emptystate_description" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource neutral_300}, Dark={StaticResource neutral_50}}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="emptystate_title" TargetType="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource neutral_300}, Dark={StaticResource neutral_50}}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="GTAmericaBold"/>
+        <Setter Property="FontSize" Value="Body"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+        <Style x:Key="primary_button" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#ffffff, Dark=#ffffff}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=#ffffff, Dark=#ffffff}"/>
+        <Setter Property="FontFamily" Value="GTAmericaBold"/>
+        <Setter Property="HeightRequest" Value="48"/>
+        <Setter Property="CornerRadius" Value="24" />
+        <Setter Property="Padding" Value="24,0" />
+        <Setter Property="ContentLayout" Value="Left,16" />
+    </Style>
+
+    <!--#endregion-->
+</ResourceDictionary>

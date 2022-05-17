@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:customuicomponents="clr-namespace:MagpieProject.CustomUIComponents" 
+    x:Class="MagpieProject.CustomUIComponents.SummaryChart">
+   
+    <ContentView.Content>
+       <Grid HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Padding="0"
+                     Margin="0,0,0,0"
+                     RowDefinitions="260,1,30,Auto"
+                    RowSpacing="0">
+            <Grid
+                Grid.Row="0"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               RowSpacing="10"
+               RowDefinitions="40,220">
+       <Frame  Grid.Row="0" Padding="0" Margin="0,10,0,0" IsClippedToBounds="True" CornerRadius="6"
+               BackgroundColor="{DynamicResource ControlBackgroundColor}"
+               BorderColor="{DynamicResource BorderClr}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="False" >
+                 <PanCake:PancakeView x:Name="currencyRow" CornerRadius="6,6,6,6" Margin="0,0,0,0"
+                                      >
+                      <PanCake:PancakeView.Border>
+                            <PanCake:Border Color="{DynamicResource BorderClr}" Thickness="1" />
+                        </PanCake:PancakeView.Border>
+                  <Grid  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand" IsClippedToBounds="True"
+                  RowDefinitions="Auto" ColumnDefinitions="*,*,*,*" BackgroundColor="{DynamicResource ControlBackgroundColor}">
+                  <Frame
+                      HasShadow="False"
+                      BackgroundColor="{DynamicResource ControlBackgroundColor}"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      IsClippedToBounds="True"
+                      CornerRadius="6"
+                      Margin="0"
+                      Padding="5" >
+                      <StackLayout HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                   Spacing="0">
+                      <Label Text="1M" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                          <Label.Triggers>
+                              <DataTrigger TargetType="Label" Binding="{Binding Is1MSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}"></Setter>
+                              </DataTrigger>
+                          </Label.Triggers>
+                      </Label>
+                      </StackLayout>
+                      <Frame.Triggers>
+                          <DataTrigger TargetType="Frame" Binding="{Binding Is1MSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="BackgroundColor" Value="{DynamicResource ControlSelectedBackgroundColor}"></Setter>
+                              </DataTrigger>
+                      </Frame.Triggers>
+                      <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="onemonth_tapped">
+
+                          </TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                  </Frame>
+                   <Frame
+                      HasShadow="False"
+                      BackgroundColor="{DynamicResource ControlBackgroundColor}"
+                      Grid.Row="0"
+                      Grid.Column="1"
+                      IsClippedToBounds="True"
+                      CornerRadius="6"
+                      Margin="0"
+                      Padding="5" >
+                      <StackLayout HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                   Spacing="0">
+                      <Label Text="3M" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                          <Label.Triggers>
+                              <DataTrigger TargetType="Label" Binding="{Binding Is3MSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}"></Setter>
+                              </DataTrigger>
+                          </Label.Triggers>
+                      </Label>
+                      </StackLayout>
+                      <Frame.Triggers>
+                          <DataTrigger TargetType="Frame" Binding="{Binding Is3MSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="BackgroundColor" Value="{DynamicResource ControlSelectedBackgroundColor}"></Setter>
+                              </DataTrigger>
+                      </Frame.Triggers>
+                      <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="threemonth_tapped">
+
+                          </TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                  </Frame>
+                 <Frame
+                      HasShadow="False"
+                      BackgroundColor="{DynamicResource ControlBackgroundColor}"
+                      Grid.Row="0"
+                      Grid.Column="2"
+                      IsClippedToBounds="True"
+                      CornerRadius="6"
+                      Margin="0"
+                      Padding="5" >
+                      <StackLayout HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                   Spacing="0">
+                      <Label Text="6M" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                          <Label.Triggers>
+                              <DataTrigger TargetType="Label" Binding="{Binding Is6MSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}"></Setter>
+                              </DataTrigger>
+                          </Label.Triggers>
+                      </Label>
+                      </StackLayout>
+                      <Frame.Triggers>
+                          <DataTrigger TargetType="Frame" Binding="{Binding Is6MSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="BackgroundColor" Value="{DynamicResource ControlSelectedBackgroundColor}"></Setter>
+                              </DataTrigger>
+                      </Frame.Triggers>
+                      <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="sixmonth_tapped">
+
+                          </TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                  </Frame>
+                       <Frame
+                      HasShadow="False"
+                      BackgroundColor="{DynamicResource ControlBackgroundColor}"
+                      Grid.Row="0"
+                      Grid.Column="3"
+                      IsClippedToBounds="True"
+                      CornerRadius="6"
+                      Margin="0"
+                      Padding="5" >
+                      <StackLayout HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                   Spacing="0">
+                      <Label Text="1Y" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                          <Label.Triggers>
+                              <DataTrigger TargetType="Label" Binding="{Binding Is1YSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}"></Setter>
+                              </DataTrigger>
+                          </Label.Triggers>
+                      </Label>
+                      </StackLayout>
+                      <Frame.Triggers>
+                          <DataTrigger TargetType="Frame" Binding="{Binding Is1YSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="BackgroundColor" Value="{DynamicResource ControlSelectedBackgroundColor}"></Setter>
+                              </DataTrigger>
+                      </Frame.Triggers>
+                      <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="oneyear_tapped">
+
+                          </TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                  </Frame>
+                      </Grid>
+                     
+                    </PanCake:PancakeView>
+           </Frame>
+            <chart:SfChart Grid.Row="1" x:Name="PercentageChart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" EnableSeriesSelection="True" Margin="0,0,-10,0">
+
+
+            
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:DateTimeAxis Interval="{Binding Interval}"  IntervalType="Months" Minimum="{Binding MinimumDate}" Maximum="{Binding MaximumDate}"  ShowMajorGridLines="False" ShowMinorGridLines="False" RangePadding="Auto" ShowTrackballInfo="False" >
+                     <chart:DateTimeAxis.TrackballLabelStyle>
+                      <chart:ChartTrackballAxisLabelStyle   BackgroundColor="Transparent" AxisLabelAlignment="Far" />
+                    </chart:DateTimeAxis.TrackballLabelStyle>  
+                    <chart:DateTimeAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle  LabelFormat="MMM" TextColor="{DynamicResource TextColor}" FontSize="12"/>
+                    </chart:DateTimeAxis.LabelStyle>
+                   
+                </chart:DateTimeAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Interval="5"  EdgeLabelsVisibilityMode="Visible" Minimum="0" Maximum="110"  EdgeLabelsDrawingMode="Fit" IsVisible="False" ShowMajorGridLines="False" ShowMinorGridLines="False" >
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12" LabelFormat="#.#'%'"/>
+                    </chart:NumericalAxis.LabelStyle>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="ProductA" TextColor="#6192f2" FontSize="15"/>
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+
+            <chart:SfChart.ChartBehaviors>
+               <chart:ChartTooltipBehavior BorderWidth="0" BackgroundColor="Transparent" Margin="0,0,0,0" />
+                <chart:ChartTrackballBehavior ShowLabel="True" ShowLine="True" ActivationMode="TouchMove">
+
+                  
+                    <chart:ChartTrackballBehavior.MarkerStyle>
+
+				<chart:ChartTrackballMarkerStyle ShowMarker="True" BorderWidth="1" Width="8" Height="8" />
+
+			</chart:ChartTrackballBehavior.MarkerStyle>
+                    <chart:ChartTrackballBehavior.LineStyle>
+
+				<chart:ChartLineStyle StrokeColor="#DDDDDD" StrokeWidth="1"/>
+
+			</chart:ChartTrackballBehavior.LineStyle>
+
+                </chart:ChartTrackballBehavior>
+            </chart:SfChart.ChartBehaviors>
+            <chart:SfChart.Series>
+                <chart:SplineSeries ItemsSource="{Binding BudgetData}" XBindingPath="XValue" YBindingPath="YValue1" Color="#7B39F5" StrokeWidth="3"  Label="Budget" EnableAnimation="True"  ShowTrackballInfo="True" >
+                  
+                </chart:SplineSeries>
+
+                
+                <chart:SplineSeries ItemsSource="{Binding Data}" XBindingPath="XValue" YBindingPath="YValue1" Color="#18A0FB" StrokeWidth="3"  Label="Actual"   EnableAnimation="True">
+                    <chart:SplineSeries.YAxis>
+                        <chart:NumericalAxis OpposedPosition="true" Minimum="0" Maximum="110"  EdgeLabelsDrawingMode="Fit" ShowMajorGridLines="False" ShowMinorGridLines="False">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12" LabelFormat="#.#'%'"/>
+                            </chart:NumericalAxis.LabelStyle>
+                           
+                        </chart:NumericalAxis>
+                    </chart:SplineSeries.YAxis>
+                     <!--<chart:SplineSeries.TooltipTemplate>
+                        <DataTemplate>
+                           <StackLayout Orientation="Vertical"
+                               HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent">
+                               <Label Text="May 25, 2022" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium"></Label>
+                               <Label Text="50% Budget, 50% Actual" TextColor="#18A0FB" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium"></Label>
+                           </StackLayout>
+                        </DataTemplate>
+                    </chart:SplineSeries.TooltipTemplate>-->
+                </chart:SplineSeries>
+
+
+                 <chart:SplineSeries ItemsSource="{Binding DataForecast}" XBindingPath="XValue" YBindingPath="YValue1" Color="#18A0FB" StrokeWidth="3"  Label="Forecast"  EnableAnimation="True" ShowTrackballInfo="True">
+                      <chart:SplineSeries.StrokeDashArray>
+                            <x:Array Type="{x:Type sys:Double}">
+                                <sys:Double>4</sys:Double>
+                                <sys:Double>3</sys:Double>
+                            </x:Array>
+                        </chart:SplineSeries.StrokeDashArray>
+                     <chart:SplineSeries.YAxis>
+                        <chart:NumericalAxis OpposedPosition="true" Minimum="0" Maximum="115"  EdgeLabelsDrawingMode="Fit" ShowMajorGridLines="False" ShowMinorGridLines="False" IsVisible="False">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12" LabelFormat="#.#'%'"/>
+                            </chart:NumericalAxis.LabelStyle>
+                           
+                        </chart:NumericalAxis>
+                    </chart:SplineSeries.YAxis>
+                     <!--<chart:SplineSeries.DataMarker>
+                        <chart:ChartDataMarker MarkerWidth="20" MarkerHeight="20"  ShowLabel="false" ShowMarker="true" MarkerBorderColor="White" MarkerBorderWidth="3" MarkerColor="#6192f2">
+                        </chart:ChartDataMarker>
+                    </chart:SplineSeries.DataMarker>-->
+                 </chart:SplineSeries>
+            </chart:SfChart.Series>
+            
+        </chart:SfChart>
+          
+           <chart:SfChart Grid.Row="1" x:Name="CurrencyChart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" EnableSeriesSelection="True" Margin="0,0,-10,0">
+
+
+             <chart:SfChart.ChartBehaviors>
+               <chart:ChartTooltipBehavior BorderWidth="0" BackgroundColor="Transparent" Margin="0,0,0,0" />
+                <chart:ChartTrackballBehavior ShowLabel="True" ShowLine="True" ActivationMode="TouchMove">
+
+                  
+                    <chart:ChartTrackballBehavior.MarkerStyle>
+
+				<chart:ChartTrackballMarkerStyle ShowMarker="True" BorderWidth="1" Width="8" Height="8" />
+
+			</chart:ChartTrackballBehavior.MarkerStyle>
+                    <chart:ChartTrackballBehavior.LineStyle>
+
+				<chart:ChartLineStyle StrokeColor="#DDDDDD" StrokeWidth="1"/>
+
+			</chart:ChartTrackballBehavior.LineStyle>
+
+                </chart:ChartTrackballBehavior>
+            </chart:SfChart.ChartBehaviors>
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:DateTimeAxis Interval="{Binding Interval}"  IntervalType="Months" Minimum="{Binding MinimumDate}" Maximum="{Binding MaximumDate}" ShowMajorGridLines="False" ShowMinorGridLines="False" RangePadding="Auto" >
+                    <chart:DateTimeAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle  LabelFormat="MMM" TextColor="{DynamicResource TextColor}" FontSize="12"/>
+                    </chart:DateTimeAxis.LabelStyle>
+                   
+                </chart:DateTimeAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis x:Name="currencyaxis" EdgeLabelsVisibilityMode="Visible" Minimum="0" Maximum="{Binding ActualMaximumCurrency}"  EdgeLabelsDrawingMode="Fit" IsVisible="False" ShowMajorGridLines="False" ShowMinorGridLines="False" LabelCreated="currencyaxis_LabelCreated">
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12" />
+                    </chart:NumericalAxis.LabelStyle>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="ProductA" TextColor="#6192f2" FontSize="15" />
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:SfChart.Series>
+                <chart:SplineSeries ItemsSource="{Binding CurrencyBudgetData}" XBindingPath="XValue" YBindingPath="YValue1" Color="#7B39F5" StrokeWidth="3"  Label="Budget" EnableAnimation="True" ShowTrackballInfo="True">
+                    <!--<chart:SplineSeries.DataMarker>
+                        <chart:ChartDataMarker MarkerWidth="20" MarkerHeight="20"  ShowLabel="false" ShowMarker="true" MarkerBorderColor="White" MarkerBorderWidth="3" MarkerColor="#6192f2">
+                        </chart:ChartDataMarker>
+                    </chart:SplineSeries.DataMarker>-->
+                </chart:SplineSeries>
+
+                
+                <chart:SplineSeries ItemsSource="{Binding CurrencyData}" XBindingPath="XValue" YBindingPath="YValue1" Color="#18A0FB" StrokeWidth="3"  Label="Actual" EnableAnimation="True" ShowTrackballInfo="True">
+                    <chart:SplineSeries.YAxis>
+                        <chart:NumericalAxis OpposedPosition="true" Minimum="0" Maximum="{Binding ActualMaximumCurrency}"  EdgeLabelsDrawingMode="Fit" ShowMajorGridLines="False" ShowMinorGridLines="False" LabelCreated="currencyaxis_LabelCreated">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12" />
+                            </chart:NumericalAxis.LabelStyle>
+                           
+                        </chart:NumericalAxis>
+                    </chart:SplineSeries.YAxis>
+                    <!--<chart:SplineSeries.DataMarker>
+                        <chart:ChartDataMarker MarkerWidth="20" MarkerHeight="20"  ShowLabel="false" ShowMarker="true" MarkerBorderColor="White" MarkerBorderWidth="3" MarkerColor="#d938d6">
+                        </chart:ChartDataMarker>
+                    </chart:SplineSeries.DataMarker>-->
+                </chart:SplineSeries>
+
+
+                 <chart:SplineSeries ItemsSource="{Binding CurrencyForecastData}" XBindingPath="XValue" YBindingPath="YValue1" Color="#18A0FB" StrokeWidth="3"  Label="Forecast" EnableAnimation="True" ShowTrackballInfo="True">
+                      <chart:SplineSeries.StrokeDashArray>
+                            <x:Array Type="{x:Type sys:Double}">
+                                <sys:Double>4</sys:Double>
+                                <sys:Double>3</sys:Double>
+                            </x:Array>
+                        </chart:SplineSeries.StrokeDashArray>
+                     <chart:SplineSeries.YAxis>
+                        <chart:NumericalAxis OpposedPosition="true" Minimum="0" Maximum="{Binding ForecastMaximumCurrency}"  EdgeLabelsDrawingMode="Fit" ShowMajorGridLines="False" ShowMinorGridLines="False" IsVisible="False" LabelCreated="currencyaxis_LabelCreated">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource TextColor}" FontSize="12" />
+                            </chart:NumericalAxis.LabelStyle>
+                           
+                        </chart:NumericalAxis>
+                    </chart:SplineSeries.YAxis>
+                     <!--<chart:SplineSeries.DataMarker>
+                        <chart:ChartDataMarker MarkerWidth="20" MarkerHeight="20"  ShowLabel="false" ShowMarker="true" MarkerBorderColor="White" MarkerBorderWidth="3" MarkerColor="#6192f2">
+                        </chart:ChartDataMarker>
+                    </chart:SplineSeries.DataMarker>-->
+                 </chart:SplineSeries>
+            </chart:SfChart.Series>
+            
+        </chart:SfChart>
+               </Grid>
+             <BoxView Grid.Row="1"  HeightRequest="1" WidthRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Color="#DDDDDD" Margin="-10,0,-10,0"></BoxView>
+
+            <Grid Grid.Row="2" x:Name="LegendGrid" HorizontalOptions="FillAndExpand"
+                  Margin="20,10,-20,0"
+                  VerticalOptions="FillAndExpand"
+                  RowDefinitions="Auto"
+                  ColumnDefinitions="*,*,*">
+                  <Grid ColumnDefinitions="25,*" HorizontalOptions="FillAndExpand"
+                        Grid.Row="0" Grid.Column="0"  RowDefinitions="12,Auto">
+                      <BoxView Grid.Row="0" Grid.Column="0" HeightRequest="1" WidthRequest="1"  Color="#18A0FB" Margin="0,10,0,0"></BoxView>
+                       <Label 
+                     Grid.Row="0"
+                           VerticalTextAlignment="Center"
+                     Grid.Column="1"
+                     Grid.RowSpan="2"
+                     Text="Actual"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                    
+                     LineBreakMode="WordWrap"></Label>
+                  </Grid>
+                 <Grid ColumnDefinitions="25,*" HorizontalOptions="FillAndExpand"
+                        Grid.Row="0" Grid.Column="2" RowDefinitions="12,Auto">
+                      <BoxView Grid.Row="0" Grid.Column="0" HeightRequest="1" WidthRequest="1"  Color="#7B39F5" Margin="0,10,0,0"></BoxView>
+                       <Label 
+                      Grid.Row="0"
+                           VerticalTextAlignment="Center"
+                     Grid.Column="1"
+                           Grid.RowSpan="2"
+                     Text="Budget"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+                  </Grid>
+                <Grid ColumnDefinitions="25,*" HorizontalOptions="FillAndExpand"
+                        Grid.Row="0" Grid.Column="1"  RowDefinitions="12,Auto">
+                    <!--<Line
+                         X1="0"
+      Y1="0"
+      X2="25"
+      Y2="0"
+      Stroke="#18A0FB"
+      StrokeDashArray="4,3"
+      StrokeDashOffset="6" Grid.Row="0" Grid.Column="0" Margin="0,10,0,0"/>-->
+                    <Image Grid.Row="0" Grid.Column="0" Margin="0,10,0,0" Source="Forecast.png" Aspect="AspectFit"></Image>
+                      <!--<BoxView Grid.Row="0" Grid.Column="0" HeightRequest="1" WidthRequest="1" Color="#18A0FB" Margin="0,10,0,0"></BoxView>-->
+                       <Label 
+                      Grid.Row="0"
+                           VerticalTextAlignment="Center"
+                     Grid.Column="1"
+                           Grid.RowSpan="2"
+                     Text="Forecast"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+                  </Grid>
+            </Grid>
+           <PanCake:PancakeView x:Name="percentagecurrencyRow" Grid.Row="3" CornerRadius="6,6,6,6" Margin="0,10,0,0"> 
+                  <Grid  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand" IsClippedToBounds="True"
+                  RowDefinitions="Auto" ColumnDefinitions="*,*" BackgroundColor="{DynamicResource ControlBackgroundColor}">
+                  <Frame
+                      HasShadow="False"
+                      BackgroundColor="{DynamicResource ControlBackgroundColor}"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      IsClippedToBounds="True"
+                      CornerRadius="6"
+                      Margin="0"
+                      Padding="5"
+                       BorderColor="{DynamicResource BorderClr}">
+                      <StackLayout HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                   Spacing="0">
+                      <Label Text="Percentage (%)" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                          <Label.Triggers>
+                              <DataTrigger TargetType="Label" Binding="{Binding IsPercentageSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}"></Setter>
+                              </DataTrigger>
+                          </Label.Triggers>
+                      </Label>
+                      </StackLayout>
+                      <Frame.Triggers>
+                          <DataTrigger TargetType="Frame" Binding="{Binding IsPercentageSelected}"
+                                           Value="True"
+                                  >
+                                  <Setter Property="BackgroundColor" Value="{DynamicResource ControlSelectedBackgroundColor}"></Setter>
+                              </DataTrigger>
+                      </Frame.Triggers>
+                      <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="percentagetile_tapped">
+
+                          </TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                  </Frame>
+                  <Frame
+                      HasShadow="False"
+                      BackgroundColor="{DynamicResource ControlBackgroundColor}"
+                      Grid.Row="0"
+                      Grid.Column="1"
+                      IsClippedToBounds="True"
+                      CornerRadius="6"
+                      Margin="-9,0,0,0"
+                      Padding="5"
+                      BorderColor="{DynamicResource BorderClr}"
+                     >
+                      <StackLayout HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Margin="0" Padding="0"
+                                   Spacing="0">
+                      <Label Text="Currency ($)" TextColor="{DynamicResource TextColor}" HorizontalTextAlignment="Center" FontFamily="GTAmericaMedium">
+                          <Label.Triggers>
+                              <DataTrigger TargetType="Label" Binding="{Binding IsPercentageSelected}"
+                                           Value="False"
+                                  >
+                                  <Setter Property="TextColor" Value="{DynamicResource SelectedTextColor}"></Setter>
+                              </DataTrigger>
+                          </Label.Triggers>
+                      </Label>
+                      </StackLayout>
+                      <Frame.Triggers>
+                          <DataTrigger TargetType="Frame" Binding="{Binding IsPercentageSelected}"
+                                           Value="False"
+                                  >
+                                  <Setter Property="BackgroundColor" Value="{DynamicResource ControlSelectedBackgroundColor}"></Setter>
+                              </DataTrigger>
+                      </Frame.Triggers>
+                       <Frame.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="currencytile_Tapped">
+
+                          </TapGestureRecognizer>
+                      </Frame.GestureRecognizers>
+                      
+                  </Frame>
+                      </Grid>
+                      <!--<PanCake:PancakeView.Border>
+        <PanCake:Border Color="Black" Thickness="20" />
+    </PanCake:PancakeView.Border>-->
+                    </PanCake:PancakeView>
+            </Grid>
+    </ContentView.Content>
+</ContentView>

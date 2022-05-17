@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customuicomponents="clr-namespace:MagpieProject.CustomUIComponents" xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="MagpieProject.Views.ProjectsModule.UserManagementPage"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+  <ContentPage.Resources>
+      <ResourceDictionary>
+          <Style x:Key="avatarFrame" TargetType="views:AvatarView">
+                <Setter Property="Margin" Value="-15,0,0,0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+      </ResourceDictionary>
+  </ContentPage.Resources>
+    <ContentPage.Content>
+            <Grid x:Name="mainGrid" RowDefinitions="90,Auto,Auto" HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand">
+                <customuicomponents:DetailHeaderWithoutUserGroup Grid.Row="0"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         TitleName="Users"
+                                                                 IsEditVisible="True"
+                                         EditCommand="{Binding BindingContext.EditUser, Source={x:Reference mainGrid}}">
+                </customuicomponents:DetailHeaderWithoutUserGroup>
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand"
+                      VerticalOptions="StartAndExpand" BindableLayout.ItemsSource="{Binding UsersData}">
+                     <BindableLayout.ItemTemplate>
+                         <DataTemplate>
+                               <Grid ColumnDefinitions="Auto,*,Auto" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="15,0,15,0">
+                                 <Image Grid.Row="0"
+                                         Grid.Column="0"
+                                         VerticalOptions="CenterAndExpand"
+                                         Source="MinusCircle.png"
+                                         HeightRequest="42"
+                                         IsVisible="{Binding IsEditSelected}"
+                                         WidthRequest="42">
+                                     <Image.GestureRecognizers>
+                                         <TapGestureRecognizer Command="{Binding BindingContext.RemoveUserCommand, Source={x:Reference mainGrid}}" CommandParameter="{Binding .}">
+                                             
+                                         </TapGestureRecognizer>
+                                     </Image.GestureRecognizers>
+                                  </Image>
+                                
+        <Grid Grid.Column="1" HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              ColumnDefinitions="Auto,*"
+              RowDefinitions="Auto"
+              Margin="10"
+              ColumnSpacing="10"
+             >
+             <views:AvatarView Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Text="{Binding Initials}" Style="{StaticResource avatarFrame}" Color="{Binding RandomColor}" TextColor="White" >
+                    <views:AvatarView.Triggers>
+                        <DataTrigger TargetType="views:AvatarView" Binding="{Binding Initials}" Value="+">
+                            <Setter Property="TextColor" Value="#717171"></Setter>
+                            <Setter Property="FontSize" Value="Title"></Setter>
+                           
+                        </DataTrigger>
+                    </views:AvatarView.Triggers>
+                </views:AvatarView>
+            <Grid Grid.Row="0"
+                  Grid.Column="1"
+                  RowSpacing="2"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                  RowDefinitions="Auto,Auto">
+                 
+                 <Label x:Name="username"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Text="{Binding FullName}"
+                     Style="{StaticResource ProjectNameStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+
+            <Label x:Name="emailid"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Text="{Binding Email}"
+                     Style="{StaticResource SubDescStyle}"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Start"
+                     LineBreakMode="WordWrap"></Label>
+
+              
+            </Grid>
+              
+        </Grid>
+           
+                                 
+                            </Grid>
+                         </DataTemplate>
+                     </BindableLayout.ItemTemplate>
+                     
+                </StackLayout>
+               <Button
+                                     Margin="20"
+                                     Grid.Row="2"
+                                     CornerRadius="10"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+
+                                         xct:ShadowEffect.Color="{DynamicResource ButtonTextColor}"
+
+                                         xct:ShadowEffect.OffsetX="2"
+
+                                         xct:ShadowEffect.OffsetY="2"
+
+                                         BackgroundColor="{DynamicResource ButtonBackgroundColor}"
+
+                                         Text="Add User" Style="{StaticResource ButtonBorderStyle}"
+                                       
+                                        Command="{Binding BindingContext.AddUserCommand, Source={x:Reference mainGrid}}"
+                                        
+                                     >
+ <!--Command="{Binding BindingContext.DismissCommand, Source={x:Reference notificationpage}}"
+                                        CommandParameter="{Binding .}"-->
+                                 </Button>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

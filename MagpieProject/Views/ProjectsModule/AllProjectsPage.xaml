@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewcell="clr-namespace:MagpieProject.Views.ProjectsModule.ViewCells"
+    x:Class="MagpieProject.Views.ProjectsModule.AllProjectsPage" Style="{StaticResource ProjectsTabbarPadding}"
+     x:Name="allproject">
+
+    <ContentView.Content>
+       <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     BindableLayout.ItemsSource="{Binding AllProjectsList}"
+                    >
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <viewcell:ProjectCardViewCell>
+                        <viewcell:ProjectCardViewCell.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.ProjectTapped, Source={x:Reference allproject}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </viewcell:ProjectCardViewCell.GestureRecognizers>
+                    </viewcell:ProjectCardViewCell>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+            </ScrollView>
+    </ContentView.Content>
+</ContentView>

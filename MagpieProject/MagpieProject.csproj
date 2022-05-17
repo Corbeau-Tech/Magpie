@@ -1,0 +1,125 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.1" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="PCLStorage" Version="1.0.2" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="6.0.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.4.0.42" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.2.0.562" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfGauge" Version="19.4.0.52" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Models\" />
+    <None Remove="Converters\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Components\" />
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="Fonts\" />
+    <None Remove="Fonts\GTAmericaBold.ttf" />
+    <None Remove="Fonts\GTAmericaBoldItalic.ttf" />
+    <None Remove="Fonts\GTAmericaOther.ttf" />
+    <None Remove="Fonts\GTAmericaRegular.ttf" />
+    <None Remove="CustomUIComponents\" />
+    <None Remove="Fonts\GTAmericaMedium.ttf" />
+    <None Remove="Database\" />
+    <None Remove="Utilities\" />
+    <None Remove="Microcharts.Forms" />
+    <None Remove="Xamarin.Forms.PancakeView" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="Helper\" />
+    <None Remove="PCLStorage" />
+    <None Remove="Themes\" />
+    <None Remove="Views\ProfileModule\" />
+    <None Remove="ViewModels\ProfileModule\" />
+    <None Remove="Views\ProjectsModule\" />
+    <None Remove="CarouselView.FormsPlugin" />
+    <None Remove="ViewModels\ProjectsModule\" />
+    <None Remove="Views\ProjectsModule\ViewCells\" />
+    <None Remove="Models\ProjectModuleModels\" />
+    <None Remove="Views\SearchModule\" />
+    <None Remove="Views\NotificationsModule\" />
+    <None Remove="Rg.Plugins.Popup" />
+    <None Remove="Enumerations\" />
+    <None Remove="Syncfusion.Xamarin.SfBadgeView" />
+    <None Remove="Xam.Plugin.Media" />
+    <None Remove="Models\UserSettings\" />
+    <None Remove="Styles\" />
+    <None Remove="Acr.UserDialogs" />
+    <None Remove="Models\NotificationsModule\" />
+    <None Remove="ViewModels\NotificationsModule\" />
+    <None Remove="ViewModels\SearchModule\" />
+    <None Remove="Templates\" />
+    <None Remove="InsertQueries.txt" />
+    <None Remove="Syncfusion.Xamarin.SfChart" />
+    <None Remove="Syncfusion.Xamarin.SfGauge" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Components\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="CustomUIComponents\" />
+    <Folder Include="Database\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Views\ProfileModule\" />
+    <Folder Include="ViewModels\ProfileModule\" />
+    <Folder Include="Views\ProjectsModule\" />
+    <Folder Include="ViewModels\ProjectsModule\" />
+    <Folder Include="Views\ProjectsModule\ViewCells\" />
+    <Folder Include="Models\ProjectModuleModels\" />
+    <Folder Include="Views\SearchModule\" />
+    <Folder Include="Views\NotificationsModule\" />
+    <Folder Include="Enumerations\" />
+    <Folder Include="Models\UserSettings\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Models\NotificationsModule\" />
+    <Folder Include="ViewModels\NotificationsModule\" />
+    <Folder Include="ViewModels\SearchModule\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\GTAmericaBold.ttf" />
+    <EmbeddedResource Include="Fonts\GTAmericaBoldItalic.ttf" />
+    <EmbeddedResource Include="Fonts\GTAmericaOther.ttf" />
+    <EmbeddedResource Include="Fonts\GTAmericaRegular.ttf" />
+    <EmbeddedResource Include="Fonts\GTAmericaMedium.ttf" />
+    <EmbeddedResource Include="InsertQueries.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ViewModels\ProfileLandingPage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Styles\SmallDevicesStyle.xaml.cs">
+      <DependentUpon>SmallDevicesStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\ProjectsModule\ProjectLandingPage.xaml.cs">
+      <DependentUpon>ProjectLandingPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
